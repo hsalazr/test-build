@@ -7,8 +7,7 @@ env:
 phases:
   install:
     commands:
-     - cat ~/.ssh/config
-     - cat ~/.ssh/github.com
+     - env-decrypt
      - echo $SSH_KEY
   pre_build:
     commands:
