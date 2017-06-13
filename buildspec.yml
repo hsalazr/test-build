@@ -8,4 +8,3 @@ phases:
   install:
     commands:
      - git-auth
-     - cat ~/.ssh/github.com
