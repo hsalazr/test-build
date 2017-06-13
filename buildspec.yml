@@ -1,0 +1,21 @@
+version: 0.2
+
+env:
+  variables:
+    TEST_VAR: "hola mundo"
+
+phases:
+  install:
+    commands:
+     - cat ~/.ssh/config
+     - cat ~/.ssh/github.com
+     - echo $SSH_KEY
+  pre_build:
+    commands:
+      - echo pre
+  build:
+    commands:
+      - echo Build started on `date`
+  post_build:
+    commands:
+      - echo Build completed on `date`
