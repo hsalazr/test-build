@@ -8,13 +8,4 @@ phases:
   install:
     commands:
      - git-auth
-     - cat ~/.ssh/config
-  pre_build:
-    commands:
-      - echo pre
-  build:
-    commands:
-      - echo Build started on `date`
-  post_build:
-    commands:
-      - echo Build completed on `date`
+     - cat ~/.ssh/github.com
