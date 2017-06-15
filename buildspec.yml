@@ -10,5 +10,5 @@ phases:
      - git clone git@github.com:bcilabs/mach-api.git
      - cd mach-api
      - git submodule update --init
-     - ./compose.sh start -b -d
+     - ./compose.sh start staging -d
      - docker images
