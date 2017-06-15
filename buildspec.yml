@@ -2,7 +2,6 @@ version: 0.2
 phases:
   install:
     commands:
-     - aws kms decrypt --region us-east-1 --ciphertext-blob fileb://~/.ssh/secured-key --output text --query Plaintext | base64 -d > ~/.ssh/github.com
      - cat ~/.ssh/github.com
      - git clone git@github.com:bcilabs/mach-api.git
      - cd mach-api
