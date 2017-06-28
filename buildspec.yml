@@ -1,14 +1,11 @@
 version: 0.2
 phases:
-  install:
-    commands:
-     - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=vfs&
-     - timeout -t 15 sh -c "until docker info; do echo .; sleep 1; done"
-  pre_build:
+  build:
     commands:
      - decrypt-key
      - git clone git@github.com:bcilabs/mach-api.git
      - cd mach-api
      - git submodule update --init
-     - ./compose.sh start staging -d
-     - docker images
+artifacts:
+  files:
+    - ./mach-api/*
