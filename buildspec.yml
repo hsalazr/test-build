@@ -19,8 +19,3 @@ phases:
     commands:
      - echo Build completed on `date`
      - 'aws sns publish --topic-arn $SNS_TOPIC --message "{\"buildId\": \"$CODEBUILD_BUILD_ID\"}"'
-artifacts:
-  files:
-   - ./mach-api/*
-
-
