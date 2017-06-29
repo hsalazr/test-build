@@ -6,15 +6,18 @@ phases:
      - git clone git@github.com:bcilabs/mach-api.git
      - cd mach-api
      - git submodule update --init
-     - ./root/.yarn/bin/yarn
+     - yarn
+     - 'aws sns publish --topic-arn arn:aws:sns:us-east-1:425782179927:test-build --message "{\"buildId\": \"$CODEBUILD_BUILD_ID\"}"'
   pre_build:
     comands:
-    - ./root/.yarn/bin/yarn lint
-    - ./root/.yarn/bin/yarn test
-    - ./root/.yarn/bin/yarn coverage
+    - yarn lint
+    - yarn test
+    - yarn coverage
+    - 'aws sns publish --topic-arn arn:aws:sns:us-east-1:425782179927:test-build --message "{\"buildId\": \"$CODEBUILD_BUILD_ID\"}"'
   build:
     commands:     
      - yarn build
+     - 'aws sns publish --topic-arn arn:aws:sns:us-east-1:425782179927:test-build --message "{\"buildId\": \"$CODEBUILD_BUILD_ID\"}"'
   post_build:
     commands:
      - echo Build completed on `date`
