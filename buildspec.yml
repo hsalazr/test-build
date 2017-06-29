@@ -5,7 +5,6 @@ phases:
      - decrypt-key
      - git clone git@github.com:bcilabs/mach-api.git
      - cd mach-api
-     - git submodule update --init
   pre_build:
     commands:
      - yarn
