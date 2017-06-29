@@ -1,15 +1,26 @@
 version: 0.2
 phases:
-  build:
+  install:
     commands:
      - decrypt-key
      - git clone git@github.com:bcilabs/mach-api.git
      - cd mach-api
      - git submodule update --init
+  pre_build:
+    commands:
+     - yarn
+  build:
+    commands:
+     - yarn lint
+     - yarn test
+     - yarn coverage
+     - yarn build
   post_build:
     commands:
      - echo Build completed on `date`
      - 'aws sns publish --topic-arn arn:aws:sns:us-east-1:425782179927:test-build --message "{\"buildId\": \"$CODEBUILD_BUILD_ID\"}"'
 artifacts:
   files:
-    - ./mach-api/*
+   - ./mach-api/*
+
+
