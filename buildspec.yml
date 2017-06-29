@@ -7,7 +7,7 @@ phases:
      - cd mach-api
      - git submodule update --init
   pre_build:
-    comands:
+    commands:
      - yarn
   build:
     commands:
