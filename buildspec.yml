@@ -2,17 +2,16 @@ version: 0.2
 phases:
   install:
     commands:
-     - apk add yarn 
      - decrypt-key
      - git clone git@github.com:bcilabs/mach-api.git
      - cd mach-api
      - git submodule update --init
-     - yarn install
+     - ./root/.yarn/bin/yarn
   pre_build:
     comands:
-    - yarn lint
-    - yarn test
-    - yarn coverage
+    - ./root/.yarn/bin/yarn lint
+    - ./root/.yarn/bin/yarn test
+    - ./root/.yarn/bin/yarn coverage
   build:
     commands:     
      - yarn build
