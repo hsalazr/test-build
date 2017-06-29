@@ -10,18 +10,16 @@ phases:
      - 'aws sns publish --topic-arn arn:aws:sns:us-east-1:425782179927:test-build --message "{\"buildId\": \"$CODEBUILD_BUILD_ID\"}"'
   pre_build:
     comands:
-    - yarn lint
-    - yarn test
-    - yarn coverage
-    - 'aws sns publish --topic-arn arn:aws:sns:us-east-1:425782179927:test-build --message "{\"buildId\": \"$CODEBUILD_BUILD_ID\"}"'
+     - yarn lint
+     - yarn test
+     - yarn coverage
   build:
     commands:     
      - yarn build
-     - 'aws sns publish --topic-arn arn:aws:sns:us-east-1:425782179927:test-build --message "{\"buildId\": \"$CODEBUILD_BUILD_ID\"}"'
   post_build:
     commands:
      - echo Build completed on `date`
      - 'aws sns publish --topic-arn arn:aws:sns:us-east-1:425782179927:test-build --message "{\"buildId\": \"$CODEBUILD_BUILD_ID\"}"'
 artifacts:
   files:
-    - ./mach-api/*
+   - ./mach-api/*
