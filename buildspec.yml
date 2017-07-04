@@ -11,7 +11,7 @@ phases:
   build:
     commands:
      - ./compose.sh build --services $SERVICES
-     - ./compose.sh publish --services $SERVICES --tag $TAG
   post_build:
     commands:
+     - ./compose.sh publish --services $SERVICES --tag $TAG
      - echo Build completed on `date`
